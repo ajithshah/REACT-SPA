@@ -10,6 +10,9 @@ import Stuff from "./Stuff";
 import Contact from "./Contact";
 import Profile from "./profile";
 import Detail from "./[id]";
+import Error from "./Error";
+
+import { Grid } from "@mui/material"
 
 const Main = () => {
   const users = [
@@ -18,26 +21,32 @@ const Main = () => {
   ];
 
   return (
-    <HashRouter>
-    <div>
-      <h1>Simple SPA</h1>
+  <Grid container spacing={2}>
+  <HashRouter>
+    <Grid item xs={2}>
       <ul className="header">
-        <li><NavLink exact to="/">Home</NavLink></li>
-        <li><NavLink to="/stuff">Stuff</NavLink></li>
-        <li><NavLink to="/contact">Contact</NavLink></li>
-        <li><NavLink to="/profile/name">profiles</NavLink></li>
+        <NavLink exact to="/"><img className="logo" src="./logo.svg" alt="hi"/></NavLink>
+        <li><NavLink exact to="/"><img src="./cart.svg"  alt="cart"/>Order</NavLink></li>
+        <li><NavLink exact to="/"><img src="./cart.svg"  alt="cart"/>Staff</NavLink></li>
+        <li><NavLink to="/stuff"><img src="./cart.svg"  alt="cart"/>Customer</NavLink></li>
+        <li><NavLink to="/contact"><img src="./cart.svg"  alt="cart"/>Product</NavLink></li>
+        <li><NavLink to="/profile/name"><img src="./cart.svg"  alt="cart"/>Routes & Driver</NavLink></li>
+        <li><NavLink to="/profile/name"><img src="./cart.svg"  alt="cart"/>Dispatch</NavLink></li>
+        <li><NavLink to="/profile/name"><img src="./cart.svg"  alt="cart"/>Report</NavLink></li>
       </ul>
-      <div className="content">
+    </Grid>
+    <Grid item xs={10}>
       <Routes>
         <Route exact path="/" element={<Home/>}/>
         <Route path="/stuff" element={<Stuff/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/profile/name" element={<Profile users={users}/>}/>
         <Route path="/profile/name/:slug" element={<Detail />}></Route>
+        <Route element={<Error />}></Route>
       </Routes>
-      </div>
-    </div>
-  </HashRouter>
+    </Grid>
+    </HashRouter>
+  </Grid>
   );
 }
  

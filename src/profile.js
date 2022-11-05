@@ -1,10 +1,10 @@
 import React from 'react'
-import { Link,  } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Profile = ({users}) => {
   
   return (
-    <div>Profile name
+    <div><p>Profile name</p>
       <div>
         {users.map((user) => (
           <li key={user.id}>
